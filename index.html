@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Daniel MacAnn — Multimedia Journalist &amp; Photographer</title>
+<meta name="description" content="Daniel MacAnn is a multimedia journalist and photographer. Engagements, milestones, community stories, and video packages." />
+
+<!-- danielmacann.com — canonical + social sharing cards -->
+<link rel="canonical" href="https://danielmacann.com/" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://danielmacann.com/" />
+<meta property="og:site_name" content="Daniel MacAnn" />
+<meta property="og:title" content="Daniel MacAnn — Multimedia Journalist &amp; Photographer" />
+<meta property="og:description" content="Photography and video storytelling. Real people, real moments, told honestly." />
+<meta property="og:image" content="https://danielmacann.com/marine-cover.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<!--
+  ════════════════════════════════════════════════════════════
+  HOW THIS SITE WORKS (the modular version)
+  ────────────────────────────────────────────────────────────
+  Scroll down to the block labeled  ★ SITE CONTENT — EDIT HERE ★
+  (just after <body>). The ENTIRE site is generated from that
+  one block. You never need to touch the HTML below it.
+
+  • Add a photo → add one { } line inside a roll's photos list
+  • Add a video → add one { } line to the videos list
+  • New gallery section → add a whole new { } roll
+  • Reorder anything → cut and paste the lines
+  • Change name / bio / email / socials → top of the block
+
+  All files (photos, videos, posters) live flat in the same
+  folder as this index.html.
+  ════════════════════════════════════════════════════════════
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Space+Grotesk:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+<style>
+  :root{
+    /* ── COFFEE PALETTE ─────────────────────────────
+       espresso  – near-black roast (background)
+       mocha     – warm surface brown
+       crema     – steamed-milk cream (main text)
+       latte     – milky tan (secondary text)
+       caramel   – drizzle accent (highlights)
+       pine      – deep espresso-bar green (secondary accent)
+    ------------------------------------------------ */
+    --espresso:#1F1410;
+    --mocha:#2C1E17;
+    --crema:#F5EBDC;
+    --latte:#B59E88;
+    --caramel:#D9973B;
+    --pine:#3E7159;
+    --line:rgba(245,235,220,0.14);
+
+    --serif:"Fraunces", Georgia, serif;
+    --sans:"Space Grotesk", system-ui, sans-serif;
+    --mono:"Space Mono", ui-monospace, monospace;
+  }
+
+  :root{--frame-w:6px}
+  @media(min-width:900px){:root{--frame-w:16px}}
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    background:var(--espresso);color:var(--crema);
+    font-family:var(--sans);line-height:1.5;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  ::selection{background:var(--caramel);color:var(--espresso)}
+
+  /* clean gallery-mat frame around the whole site */
+  body::after{
+    content:"";position:fixed;inset:0;z-index:250;
+    border:var(--frame-w) solid #000;
+    pointer-events:none;
+  }
+  a{color:inherit;text-decoration:none}
+  img,video{display:block;max-width:100%}
+
+  .advance{
+    position:fixed;top:var(--frame-w);left:var(--frame-w);height:2px;width:0%;
+    max-width:calc(100vw - 2*var(--frame-w));
+    background:linear-gradient(90deg,var(--pine),var(--caramel));z-index:100;
+    box-shadow:0 0 12px rgba(217,151,59,.55);
+  }
+  .grain{
+    position:fixed;inset:0;z-index:99;pointer-events:none;opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden}
+  .hero-img{position:absolute;inset:0}
+  .hero-img img{width:100%;height:100%;object-fit:cover;object-position:center 30%;filter:contrast(1.02) brightness(.9) sepia(.12)}
+  .hero-img::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg, rgba(31,20,16,.4) 0%, rgba(31,20,16,.05) 40%, rgba(31,20,16,.93) 88%, var(--espresso) 100%);
+  }
+  .hero-content{position:relative;z-index:2;padding:0 22px 34px}
+  .hero .eyebrow{
+    font-family:var(--mono);font-size:11px;letter-spacing:.3em;
+    text-transform:uppercase;color:var(--caramel);margin-bottom:10px;
+  }
+  .hero h1{
+    font-family:var(--serif);font-weight:400;
+    font-size:clamp(54px,17vw,108px);line-height:.94;letter-spacing:-.01em;
+    margin-bottom:16px;
+  }
+  .hero h1 em{font-style:italic;color:var(--latte)}
+  .hero p.lede{font-size:clamp(16px,4.4vw,19px);max-width:34ch;line-height:1.45;opacity:.92}
+  .scrollcue{
+    margin-top:26px;display:flex;align-items:center;gap:10px;
+    font-family:var(--mono);font-size:11px;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--latte);
+  }
+  .scrollcue .arrow{width:1px;height:34px;background:linear-gradient(var(--latte),transparent);animation:drop 1.9s ease-in-out infinite}
+  @keyframes drop{0%,100%{opacity:.3;transform:translateY(0)}50%{opacity:1;transform:translateY(6px)}}
+
+  /* ---------- ROLL HEADERS ---------- */
+  .roll-head{padding:52px 22px 20px;max-width:680px;margin:0 auto}
+  .roll-head .label{
+    font-family:var(--mono);font-size:11px;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--pine);
+    filter:brightness(1.35);
+  }
+  .roll-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(34px,10vw,54px);line-height:1;margin-top:8px}
+  .roll-head p{color:var(--latte);font-size:14px;margin-top:10px;max-width:44ch}
+
+  /* ---------- FRAMES (two-up grid) ---------- */
+  .roll-grid{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:12px 10px;
+    max-width:680px;margin:0 auto;padding:0 14px 6px;
+  }
+  .frame{position:relative;margin:0}
+  .frame.wide{grid-column:1 / -1}
+  .frame:not(.wide) img{aspect-ratio:4/5;object-fit:cover}
+  .strip{position:relative;border-radius:3px;overflow:hidden;background:var(--mocha)}
+  .strip::before,.strip::after{
+    content:"";position:absolute;top:0;bottom:0;width:10px;z-index:2;
+    background-image:radial-gradient(circle at center, var(--espresso) 40%, transparent 41%);
+    background-size:10px 18px;background-repeat:repeat-y;opacity:.9;
+  }
+  .strip::before{left:0}
+  .strip::after{right:0}
+  .frame img{width:100%;height:auto;filter:contrast(1.02)}
+  .cap{
+    display:flex;flex-direction:column;gap:2px;padding:8px 2px 2px;
+    font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--latte);
+  }
+  .cap .no{color:var(--caramel)}
+  .cap .title{color:var(--crema)}
+  .cap .meta{font-size:10px;opacity:.85}
+
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- VIDEO ---------- */
+  .vcard{position:relative;margin:0 auto 18px;max-width:680px;padding:0 14px}
+  .vwrap{border-radius:3px;overflow:hidden;border:1px solid var(--line);background:var(--mocha)}
+  .vwrap video{width:100%;aspect-ratio:16/9;background:#000}
+  .vmeta{
+    padding:10px 4px 2px;display:flex;justify-content:space-between;gap:12px;
+    font-family:var(--mono);font-size:11px;color:var(--latte);
+  }
+  .vmeta .vt{color:var(--crema)}
+  .vmeta .vd{color:var(--caramel);white-space:nowrap}
+  .vblurb{padding:7px 4px 0;font-size:12.5px;color:var(--latte);line-height:1.55;max-width:56ch}
+
+  /* ---------- STATEMENT ---------- */
+  .statement{padding:64px 22px;max-width:620px;margin:0 auto}
+  .statement .label{font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--latte);margin-bottom:22px}
+  .statement p.big{font-family:var(--serif);font-size:clamp(22px,6.2vw,29px);line-height:1.32;margin-bottom:20px}
+  .statement p.big em{font-style:italic;color:var(--caramel)}
+  .statement .fine{font-size:14px;color:var(--latte);line-height:1.6}
+
+  /* ---------- SERVICES ---------- */
+  .does{padding:10px 22px 60px;max-width:680px;margin:0 auto}
+  .does .label{font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--latte);margin-bottom:8px}
+  .doeslist{border-top:1px solid var(--line)}
+  .doeslist .row{display:flex;align-items:baseline;gap:14px;padding:20px 2px;border-bottom:1px solid var(--line);transition:padding-left .15s ease}
+  .doeslist a.row:active .k{color:var(--caramel)}
+  @media(hover:hover){ .doeslist a.row:hover{padding-left:8px} .doeslist a.row:hover .k{color:var(--caramel)} }
+  .doeslist .row .k{font-family:var(--serif);font-size:clamp(25px,6.6vw,34px);line-height:1}
+  .doeslist .row .d{margin-left:auto;text-align:right;font-size:12px;color:var(--latte);max-width:17ch}
+
+  /* ---------- CONTACT ---------- */
+  .contact{padding:70px 22px 40px;text-align:center}
+  .contact .label{font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--latte)}
+  .contact h3{font-family:var(--serif);font-weight:400;font-size:clamp(40px,13vw,72px);line-height:.98;margin:14px 0 26px}
+  .btn{
+    display:inline-block;width:100%;max-width:420px;
+    font-family:var(--mono);font-size:14px;letter-spacing:.06em;
+    padding:18px 20px;border-radius:3px;
+    background:var(--crema);color:var(--espresso);font-weight:700;
+    transition:transform .15s ease, background .15s ease;
+  }
+  .btn:active{transform:scale(.985)}
+  .socials{
+    margin-top:26px;display:flex;gap:26px;justify-content:center;flex-wrap:wrap;
+    font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;
+  }
+  .socials a{color:var(--latte);padding:8px 2px;border-bottom:1px solid transparent;transition:color .15s,border-color .15s}
+  .socials a:active{color:var(--crema)}
+
+  .pagelink{
+    display:inline-block;margin-top:18px;
+    font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--caramel);border-bottom:1px solid var(--caramel);padding-bottom:3px;
+  }
+  .btn-outline{background:transparent;color:var(--crema);border:1px solid var(--line);font-weight:400}
+  .contact-page{
+    min-height:100svh;max-width:520px;margin:0 auto;padding:90px 22px 60px;
+    display:flex;flex-direction:column;justify-content:center;align-items:center;
+    gap:14px;text-align:center;
+  }
+  .contact-page .backlink{
+    position:fixed;top:calc(var(--frame-w) + 10px);left:calc(var(--frame-w) + 10px);z-index:5;
+    font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--latte);background:rgba(31,20,16,.6);border:1px solid var(--line);
+    padding:8px 12px;border-radius:2px;
+    backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  }
+  .contact-page h3{font-family:var(--serif);font-weight:400;font-size:clamp(44px,14vw,76px);line-height:.98}
+  .contact-page .cp-blurb{color:var(--latte);font-size:15px;max-width:34ch;margin-bottom:10px}
+
+  footer{
+    padding:34px 22px;text-align:center;
+    font-family:var(--mono);font-size:10px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--latte);border-top:1px solid var(--line);
+  }
+
+  @media(hover:hover){
+    .socials a:hover{color:var(--crema);border-color:var(--caramel)}
+    .btn:hover{background:var(--caramel)}
+  }
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .reveal{opacity:1;transform:none;transition:none}
+    .scrollcue .arrow{animation:none}
+  }
+</style>
+</head>
+<body>
+
+<script>
+/* ════════════════════════════════════════════════════════════
+   ★ SITE CONTENT — EDIT HERE ★
+   Everything on the page is generated from this one block.
+   ════════════════════════════════════════════════════════════ */
+const SITE = {
+  firstName: "Daniel",
+  lastName: "MacAnn",
+  roles: "Multimedia Journalist · Photographer",
+  tagline: "Photography and video storytelling. Real people, real moments, told honestly.",
+
+  hero: { src: "marine-cover.jpg",
+          alt: "A Marine in dress blues adjusts his white cover, sunlight flaring through the trees" },
+
+  aboutBig: 'Some stories need a camera. Some need a mic and an edit bay. <em>The good ones need both.</em>',
+  aboutFine: "Daniel MacAnn is a multimedia journalist and photographer pursuing a BA in Communications with a concentration in New Media at Southern New Hampshire University. He interned with Cobb EDTV, where he filmed, edited, and live-streamed news packages and community coverage. His client work includes the Alabama Free Will Baptist Children's Home and the State of Georgia through the Acworth Botanical Gardens, where he filmed advertisements and events like the 2018 Easter Bash. Behind a still camera, he shoots engagements, graduations, families, and the everyday moments in between.",
+
+  email: "macanndaniel@gmail.com",
+  phone: "(984) 244-9570",
+  socials: [
+    { name: "Instagram", url: "#" },  // ← paste real links
+    { name: "YouTube",   url: "#" },
+    { name: "LinkedIn",  url: "#" },
+  ],
+
+  services: [
+    { name: "Engagements", note: "Proposals & sessions" },
+    { name: "Graduations", note: "Portraits & parties" },
+    { name: "Events",      note: "Coverage & candids" },
+    { name: "Video",       note: "Packages, editing, live streams" },
+  ],
+};
+
+/* ── PHOTO ROLLS ─────────────────────────────────────────────
+   Each roll = one gallery section. Each photo = one line.
+   Frame numbers (#01, #02...) are automatic.                 */
+const ROLLS = [
+  {
+    label: "Roll 01", title: "The Yes",
+    blurb: "Engagements and the small details that tell the whole story.",
+    photos: [
+      { src: "engagement-hands.jpg", title: "She Said Yes",  meta: "Engagement",  alt: "Her hands clasped behind his neck, engagement ring catching the light beside his cross tattoo" },
+      { src: "ring-boots.jpg",       title: "Boots & a Box", meta: "Detail work", wide: true, alt: "An open ring box on stone ground, framed by two pairs of worn cowboy boots" },
+    ],
+  },
+  {
+    label: "Roll 02", title: "Cap & Gown",
+    blurb: "Graduation portraits and the parties that follow.",
+    photos: [
+      { src: "grad-swing.jpg",         title: "The Swing",               meta: "Senior portraits", alt: "A graduate in navy cap and gown smiling on a wooden tree swing" },
+      { src: "grad-sisters-swing.jpg", title: "Two Graduations",         meta: "Family session",   alt: "A college graduate stands behind a little girl in a pink cap and gown on a tree swing" },
+      { src: "grads-bench.jpg",        title: "Golden Hour, Class of '24", meta: "Family session", wide: true, alt: "The two graduates share a bench in golden sunlight outside a stone building" },
+      { src: "grad-party-trio.jpg",    title: "Finally Finished",        meta: "Event coverage",   alt: "A graduate holds a Finally Finished sign between two smiling guests under balloons" },
+      { src: "grad-party-dad.jpg",     title: "Proud",                   meta: "Event coverage",   alt: "A graduate and his father in front of a gold party backdrop" },
+      { src: "party-thumbsup.jpg",     title: "Approved",                meta: "Candid",           alt: "A grandfather in a Hawaiian shirt gives a thumbs up at the party table" },
+    ],
+  },
+  {
+    label: "Roll 03", title: "Community",
+    blurb: "Toy runs and Santa visits at the Alabama Free Will Baptist Children's Home, plus a grandmother who out-fished everyone.",
+    photos: [
+      { src: "grinch-harley.jpg", title: "Grinch on a Harley",  meta: "AFWB Children's Home", alt: "The Grinch in a Santa suit rides a decorated Harley during a toy run" },
+      { src: "santa.jpg",         title: "Front Row with Santa", meta: "AFWB Children's Home", alt: "A girl in reindeer antlers grins beside Santa Claus" },
+      { src: "fishing.jpg",       title: "Catch of the Day",     meta: "Documentary",   wide: true, alt: "A grandmother in a sun hat reels in a bluegill from her wheelchair on a dock" },
+    ],
+  },
+  {
+    label: "Roll 04", title: "Honor",
+    blurb: "A Marine homecoming series. Dress blues, worn boots, and the weight both carry.",
+    photos: [
+      { src: "marine-boots.jpg", title: "Where He's Been",  meta: "Series · 1 of 2", alt: "Worn combat boots with dog tags hanging between the laces" },
+      { src: "marine-dress.jpg", title: "Where He's Going", meta: "Series · 2 of 2", alt: "A white dress cover resting on polished black dress shoes" },
+    ],
+  },
+  {
+    label: "Roll 05", title: "Still Life",
+    blurb: "Slow subjects, careful light.",
+    photos: [
+      { src: "latte.jpg",         title: "Slow Morning", meta: "Still life",  alt: "A layered latte in a cut crystal glass mug" },
+      { src: "shrimp.jpg",        title: "The Last One", meta: "Food",        alt: "A hand places the last shrimp on a ring of shrimp cocktail" },
+      { src: "dog-christmas.jpg", title: "Not Amused",   meta: "Pet portrait", alt: "A pit bull sits unimpressed in front of Christmas presents" },
+    ],
+  },
+];
+
+/* ── VIDEOS ──────────────────────────────────────────────────
+   Filmed / edited / streamed at Cobb EDTV.
+   Each video = one line. Poster images were pulled from the
+   footage; to change one, swap the -poster.jpg file.          */
+const VIDEO_SECTION = {
+  label: "In Motion", title: "Video & News Packages",
+  blurb: "Filmed, edited, and live-streamed during his internship with Cobb EDTV.",
+};
+const VIDEOS = [
+  { src: "flip-fest.mp4",       poster: "flip-fest-poster.jpg",       title: "Flip Fest Gymnastics Camp",     meta: "Advertisement",
+    blurb: "Camp ad featuring Olympians Shawn Johnson, Blaine Wilson, and John Roethlisberger, plus an interview with 2008 British Olympian Marissa King." },
+  { src: "teacher-of-year.mp4", poster: "teacher-of-year-poster.jpg", title: "Teacher of the Year Breakfast", meta: "Event coverage" },
+  { src: "stem-ctae.mp4",       poster: "stem-ctae-poster.jpg",       title: "STEM in CTAE",                  meta: "Social media edit" },
+  { src: "class-ring.mp4",      poster: "class-ring-poster.jpg",      title: "Class Ring Ceremony",           meta: "News package" },
+  { src: "swim-meet.mp4",       poster: "swim-meet-poster.jpg",       title: "Swim Meet",                     meta: "News package" },
+  { src: "food-pantry.mp4",     poster: "food-pantry-poster.jpg",     title: "Acworth Elementary Food Pantry", meta: "News package" },
+  { youtube: "0BHT1Ey5xpg", title: "Spring at Smith-Gilbert Gardens", meta: "Client work" },
+];
+/* ════════════ END OF EDITABLE CONTENT ════════════ */
+</script>
+
+<div class="advance" id="advance"></div>
+<div class="grain"></div>
+
+<div id="app"></div>
+
+<script>
+/* ── RENDERER — you shouldn't need to edit below this line ── */
+
+/* Files can live flat next to index.html OR inside these folders.
+   The site checks each location automatically, so the same
+   index.html works in either project structure. */
+const FOLDERS = ["", "photos/", "videos/", "media/"];
+
+function imgFallback(el){
+  const next = (parseInt(el.dataset.f || "0", 10)) + 1;
+  if(next < FOLDERS.length){
+    el.dataset.f = next;
+    el.src = FOLDERS[next] + el.dataset.name;
+  }
+}
+
+(function(){
+  const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  let frame = 0;
+  const num = () => '#' + String(++frame).padStart(2,'0');
+
+  const photoHTML = p => `
+    <figure class="frame${p.wide ? ' wide' : ''} reveal">
+      <div class="strip"><img src="${esc(p.src)}" data-name="${esc(p.src)}" onerror="imgFallback(this)" alt="${esc(p.alt||p.title)}" loading="lazy" /></div>
+      <figcaption class="cap">
+        <span><span class="no">${num()}</span> &nbsp;<span class="title">${esc(p.title)}</span></span>
+        <span class="meta">${esc(p.meta||'')}</span>
+      </figcaption>
+    </figure>`;
+
+  const rollHTML = r => `
+    <section>
+      <div class="roll-head reveal">
+        <div class="label">${esc(r.label)}</div>
+        <h2>${esc(r.title)}</h2>
+        ${r.blurb ? `<p>${esc(r.blurb)}</p>` : ''}
+      </div>
+      <div class="roll-grid">${r.photos.map(photoHTML).join('')}</div>
+    </section>`;
+
+  const videoHTML = v => `
+    <div class="vcard reveal">
+      <div class="vwrap">
+        ${v.youtube
+          ? `<div style="position:relative;aspect-ratio:16/9;"><iframe src="https://www.youtube-nocookie.com/embed/${esc(v.youtube)}" title="${esc(v.title)}" style="position:absolute;inset:0;width:100%;height:100%;border:0;" allowfullscreen loading="lazy"></iframe></div>`
+          : `<video controls playsinline preload="none" data-src="${esc(v.src)}" data-poster="${esc(v.poster||'')}"></video>`}
+      </div>
+      <div class="vmeta"><span class="vt">${esc(v.title)}</span><span class="vd">${esc(v.meta||'')}</span></div>
+      ${v.blurb ? `<p class="vblurb">${esc(v.blurb)}</p>` : ''}
+    </div>`;
+
+  document.getElementById('app').innerHTML = `
+    <header class="hero">
+      <div class="hero-img"><img src="${esc(SITE.hero.src)}" data-name="${esc(SITE.hero.src)}" onerror="imgFallback(this)" alt="${esc(SITE.hero.alt)}" fetchpriority="high" /></div>
+      <div class="hero-content">
+        <div class="eyebrow">${esc(SITE.roles)}</div>
+        <h1>${esc(SITE.firstName)} <em>${esc(SITE.lastName)}</em></h1>
+        <p class="lede">${esc(SITE.tagline)}</p>
+        <div class="scrollcue"><span class="arrow"></span>Roll the film</div>
+      </div>
+    </header>
+
+    ${ROLLS.map(rollHTML).join('')}
+
+    <section>
+      <div class="roll-head reveal">
+        <div class="label">${esc(VIDEO_SECTION.label)}</div>
+        <h2>${esc(VIDEO_SECTION.title)}</h2>
+        ${VIDEO_SECTION.blurb ? `<p>${esc(VIDEO_SECTION.blurb)}</p>` : ''}
+      </div>
+      ${VIDEOS.map(videoHTML).join('')}
+    </section>
+
+    <section class="statement reveal">
+      <div class="label">About ${esc(SITE.firstName)}</div>
+      <p class="big">${SITE.aboutBig}</p>
+      <p class="fine">${esc(SITE.aboutFine)}</p>
+    </section>
+
+    <section class="does">
+      <div class="label reveal">Available for</div>
+      <div class="doeslist">
+        ${SITE.services.map(s => `<a class="row reveal" href="mailto:${esc(SITE.email)}?subject=${encodeURIComponent(s.name + ' inquiry')}"><span class="k">${esc(s.name)}</span><span class="d">${esc(s.note)}</span></a>`).join('')}
+      </div>
+    </section>
+
+    <section class="contact">
+      <div class="label reveal">Have a story or event needing coverage?</div>
+      <h3 class="reveal">Get in touch</h3>
+      <a class="btn reveal" href="mailto:${esc(SITE.email)}">${esc(SITE.email)}</a>
+      <div class="reveal"><a class="pagelink" href="#contact">Phone &amp; more ways to reach him</a></div>
+      <div class="socials reveal">
+        ${SITE.socials.map(s => `<a href="${esc(s.url)}" ${s.url !== '#' ? 'target="_blank" rel="noopener"' : ''}>${esc(s.name)}</a>`).join('')}
+      </div>
+    </section>
+
+    <footer>© ${new Date().getFullYear()} ${esc(SITE.firstName)} ${esc(SITE.lastName)} · ${esc(SITE.roles).replace(/ · /g,' & ')}</footer>
+  `;
+
+  /* ── contact page (second page, hash-routed: #contact) ── */
+  const tel = SITE.phone.replace(/[^0-9]/g, '');
+  const contactEl = document.createElement('div');
+  contactEl.id = 'contactPage';
+  contactEl.style.display = 'none';
+  contactEl.innerHTML = `
+    <section class="contact-page">
+      <a class="backlink" href="#">&larr; Back to the work</a>
+      <div class="label" style="font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--latte);">Contact</div>
+      <h3>Let&rsquo;s talk.</h3>
+      <p class="cp-blurb">Booking photo sessions, event coverage, and video work.</p>
+      <a class="btn" href="tel:+1${tel}">Call ${esc(SITE.phone)}</a>
+      <a class="btn btn-outline" href="sms:+1${tel}">Text ${esc(SITE.phone)}</a>
+      <a class="btn btn-outline" href="mailto:${esc(SITE.email)}">${esc(SITE.email)}</a>
+      <div class="socials">
+        ${SITE.socials.map(s => `<a href="${esc(s.url)}" ${s.url !== '#' ? 'target="_blank" rel="noopener"' : ''}>${esc(s.name)}</a>`).join('')}
+      </div>
+    </section>`;
+  document.body.appendChild(contactEl);
+
+  const appEl = document.getElementById('app');
+  function route(){
+    const onContact = location.hash === '#contact';
+    contactEl.style.display = onContact ? 'block' : 'none';
+    appEl.style.display = onContact ? 'none' : 'block';
+    if(onContact) document.querySelectorAll('video').forEach(o => { if(!o.paused) try{ o.pause(); }catch(e){} });
+    window.scrollTo(0, 0);
+  }
+  window.addEventListener('hashchange', route);
+  route();
+
+  /* film-advance progress bar */
+  const advance = document.getElementById('advance');
+  let ticking = false;
+  function update(){
+    const doc = document.documentElement;
+    const max = doc.scrollHeight - doc.clientHeight;
+    let p = max > 0 ? (doc.scrollTop || document.body.scrollTop) / max : 0;
+    p = Math.min(1, Math.max(0, p));
+    advance.style.width = (p * 100).toFixed(2) + '%';
+    ticking = false;
+  }
+  window.addEventListener('scroll', () => {
+    if(!ticking){ requestAnimationFrame(update); ticking = true; }
+  }, {passive:true});
+  update();
+
+  /* ── video setup ──
+     Resolves where each video/poster actually lives (flat or in
+     a folder), then wires up the player. */
+  function findFile(name, onFound){
+    let i = 0;
+    const test = () => {
+      if(i >= FOLDERS.length) return;           /* not found anywhere; skip quietly */
+      const probe = new Image();
+      const path = FOLDERS[i] + name;
+      probe.onload = () => onFound(path);
+      probe.onerror = () => { i++; test(); };
+      probe.src = path;
+    };
+    test();
+  }
+
+  document.querySelectorAll('video[data-src]').forEach(v => {
+    /* poster: probe locations, set when found */
+    if(v.dataset.poster) findFile(v.dataset.poster, p => { v.poster = p; });
+
+    /* source: try each location until the video can load */
+    let fi = 0;
+    const setSrc = () => { v.src = FOLDERS[fi] + v.dataset.src; };
+    v.addEventListener('error', () => {
+      fi++;
+      if(fi < FOLDERS.length) setSrc();
+    });
+    setSrc();
+
+    /* pause other videos when this one starts (mobile courtesy).
+       Only pauses videos that are actually playing, so we never
+       interrupt one that is still loading (that was the source
+       of the AbortError). */
+    v.addEventListener('play', () => {
+      document.querySelectorAll('video').forEach(o => {
+        if(o !== v && !o.paused && o.readyState > 2){
+          try { o.pause(); } catch(e) {}
+        }
+      });
+    });
+  });
+
+  /* Some preview apps abort media requests when players scroll
+     offscreen; that shows up as a harmless AbortError. Silence it
+     so it doesn't clutter the console. */
+  window.addEventListener('unhandledrejection', e => {
+    if(e.reason && e.reason.name === 'AbortError') e.preventDefault();
+  });
+
+  /* scroll reveals */
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!reduce && 'IntersectionObserver' in window){
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, {threshold:0.12, rootMargin:'0px 0px -8% 0px'});
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+  }
+})();
+</script>
+</body>
+</html>
