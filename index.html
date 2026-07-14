@@ -423,6 +423,7 @@ const FOLDERS = ["", "photos/", "videos/", "media/"];
 /* Embedded copies of every photo & poster, so this single file
    displays correctly anywhere, even sandboxed previews. */
 const ASSETS = {};
+const asset = name => ASSETS[name] || name;
 
 function imgFallback(el){
   const next = (parseInt(el.dataset.f || "0", 10)) + 1;
