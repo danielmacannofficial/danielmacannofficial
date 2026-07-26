@@ -149,6 +149,28 @@
   }
   .strip::before{left:0}
   .strip::after{right:0}
+
+  /* The Honor roll sits over a restrained golden-hour backlight.
+     The opaque section surface keeps the glow visible only at its edges. */
+  .honor-roll{
+    position:relative;isolation:isolate;margin:38px 0;padding:10px 0 22px;
+  }
+  .honor-roll::before{
+    content:"";position:absolute;z-index:-2;pointer-events:none;
+    inset:-34px 4%;
+    background:
+      radial-gradient(ellipse 68% 92px at 50% 0%,rgba(224,162,73,.48),transparent 72%),
+      radial-gradient(ellipse 68% 92px at 50% 100%,rgba(224,162,73,.42),transparent 72%);
+    filter:blur(22px);opacity:.72;
+  }
+  .honor-roll::after{
+    content:"";position:absolute;z-index:-1;pointer-events:none;inset:0;
+    background:linear-gradient(180deg,rgba(27,14,9,.98),var(--espresso) 8%,var(--espresso) 92%,rgba(27,14,9,.98));
+  }
+  .honor-roll .roll-grid{
+    max-width:920px;grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+  .honor-roll .frame.wide{grid-column:1 / -1}
   .frame{--rx:0deg;--ry:0deg;--mx:50%;--my:42%;perspective:900px}
   .strip{transform:rotateX(var(--rx)) rotateY(var(--ry)) translateZ(0);transition:transform .45s cubic-bezier(.2,.75,.2,1),box-shadow .45s ease}
   .frame img{width:100%;height:auto;filter:contrast(1.02);transition:transform .7s cubic-bezier(.2,.75,.2,1),filter .45s ease}
@@ -431,12 +453,11 @@ const ROLLS = [
     label: "Roll 04", title: "Honor",
     blurb: "One continuing portrait series about service, homecoming, memory, and the quiet symbols of duty.",
     photos: [
-      { src: "marine-cover.jpg", title: "Dress Blues at Golden Hour", meta: "Honor series · 1 of 6", alt: "A Marine in dress blues adjusts his white cover, sunlight flaring through the trees" },
-      { src: "freedom.jpg",      title: "Freedom",                    meta: "Honor series · 2 of 6", alt: "A hand trails through tall grass, silhouetted against a warm setting sun" },
-      { src: "marine-boots.jpg", title: "Where He's Been",            meta: "Honor series · 3 of 6", alt: "Worn combat boots with dog tags hanging between the laces" },
-      { src: "marine-dress.jpg", title: "Where He's Going",           meta: "Honor series · 4 of 6", alt: "A white dress cover resting on polished black dress shoes" },
-      { src: "always-ready.webp", title: "Always Ready",              meta: "Honor series · 5 of 6", alt: "A Marine stands in dress blues as golden sunlight flares behind him" },
-      { src: "home-honor.webp", title: "Home",                        meta: "Honor series · 6 of 6", wide: true, alt: "A calm lake and autumn shoreline framed by trees and a white fence" },
+      { src: "marine-cover.jpg", title: "Dress Blues at Golden Hour", meta: "Honor series · 1 of 5", alt: "A Marine in dress blues adjusts his white cover, sunlight flaring through the trees" },
+      { src: "marine-boots.jpg", title: "Where He's Been",            meta: "Honor series · 2 of 5", alt: "Worn combat boots with dog tags hanging between the laces" },
+      { src: "marine-dress.jpg", title: "Where He's Going",           meta: "Honor series · 3 of 5", alt: "A white dress cover resting on polished black dress shoes" },
+      { src: "duty-and-shadow.webp", title: "Duty and Shadow",        meta: "Honor series · 4 of 5", alt: "A Marine stands in silhouette before an American flag as golden sunlight flares beside him" },
+      { src: "home-honor.webp", title: "Home",                        meta: "Honor series · 5 of 5", wide: true, alt: "A calm lake and autumn shoreline framed by trees and a white fence" },
     ],
   },
   {
@@ -520,7 +541,7 @@ function imgFallback(el){
     </figure>`;
 
   const rollHTML = r => `
-    <section class="${['Cap & Gown','Community'].includes(r.title) ? 'photo-game' : ''}" data-album="${esc(r.title)}">
+    <section class="${[['Cap & Gown','Community'].includes(r.title) ? 'photo-game' : '', r.title === 'Honor' ? 'honor-roll' : ''].filter(Boolean).join(' ')}" data-album="${esc(r.title)}">
       <div class="roll-head reveal">
         <div class="label">${esc(r.label)}</div>
         <h2>${esc(r.title)}</h2>
