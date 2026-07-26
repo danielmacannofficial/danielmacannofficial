@@ -97,7 +97,7 @@
   /* ---------- HERO ---------- */
   .hero{min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden}
   .hero-img{position:absolute;inset:0}
-  .hero-img img{width:100%;height:100%;object-fit:cover;object-position:52% 32%;filter:contrast(1.02) brightness(.9) sepia(.08);transform:scale(1.035);transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+  .hero-img img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;filter:contrast(1.02) brightness(.9) sepia(.08);transform:scale(1.035);transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
   .hero-img::after{
     content:"";position:absolute;inset:0;
     background:linear-gradient(180deg, rgba(31,20,16,.4) 0%, rgba(31,20,16,.05) 40%, rgba(31,20,16,.93) 88%, var(--espresso) 100%);
@@ -370,8 +370,8 @@ const SITE = {
   roles: "Multimedia Journalist · Photographer",
   tagline: "Photography and video storytelling. Real people, real moments, told honestly.",
 
-  hero: { src: "DanielMacAnnPhotography-hero-v2.webp",
-          alt: "Daniel MacAnn photographing a mountain landscape with his camera" },
+  hero: { src: "daniel-macann-hero-v3.webp",
+          alt: "Daniel MacAnn holding his camera at a mountain overlook" },
 
   aboutBig: 'Some stories need a camera. Some need a mic and an edit bay. <em>The good ones need both.</em>',
   aboutFine: "Daniel MacAnn is a multimedia journalist and photographer pursuing a BA in Communications with a concentration in New Media at Southern New Hampshire University. He interned with Cobb EDTV, where he filmed, edited, and live-streamed news packages and community coverage. His client work includes the Alabama Free Will Baptist Children's Home and the State of Georgia through the Acworth Botanical Gardens, where he filmed advertisements and events like the 2018 Easter Bash. Behind a still camera, he shoots engagements, graduations, families, and the everyday moments in between.",
@@ -401,7 +401,7 @@ const ROLLS = [
     blurb: "Engagements and the small details that tell the whole story.",
     photos: [
       { src: "proposal-mountain.jpg", title: "Above the Clouds", meta: "Proposal", wide: true, alt: "He kneels on a mountain overlook as she covers her face, morning fog filling the valley below" },
-      { src: "the-rock-v2.webp", title: "The Rock", meta: "Engagement", alt: "Her engagement ring catches the light as her hands rest behind her partner's neck" },
+      { src: "the-promise.webp", title: "The Promise", meta: "Engagement detail", alt: "An engagement ring catches the golden light as the couple holds hands" },
       { src: "looking-forward.jpg",  title: "Looking Forward", meta: "Engagement", alt: "The couple embraces looking out over misty mountains, her new ring resting on his arm" },
       { src: "ring-boots.jpg",       title: "Boots & a Box", meta: "Detail work", wide: true, alt: "An open ring box on stone ground, framed by two pairs of worn cowboy boots" },
     ],
@@ -411,7 +411,7 @@ const ROLLS = [
     blurb: "Graduation portraits and the parties that follow.",
     photos: [
       { src: "grad-2025.jpg",          title: "Class of 2025",           meta: "Senior portraits", alt: "A 2025 graduate in black cap and gown smiling with a small bouquet of flowers" },
-      { src: "grad-swing.jpg",         title: "The Swing",               meta: "Senior portraits", alt: "A graduate in navy cap and gown smiling on a wooden tree swing" },
+      { src: "at-long-last.webp",      title: "At Long Last",            meta: "Graduation milestone", alt: "A smiling graduate holds his diploma beside a family member at Bevill State Community College" },
       { src: "grads-bench.jpg",        title: "Golden Hour, Class of '24", meta: "Family session", wide: true, alt: "The two graduates share a bench in golden sunlight outside a stone building" },
       { src: "grad-party-trio.jpg",    title: "Finally Finished",        meta: "Event coverage",   alt: "A graduate holds a Finally Finished sign between two smiling guests under balloons" },
       { src: "party-thumbsup.jpg",     title: "Approved",                meta: "Candid",           alt: "A grandfather in a Hawaiian shirt gives a thumbs up at the party table" },
@@ -424,16 +424,19 @@ const ROLLS = [
       { src: "grinch-harley.jpg", title: "Grinch on a Harley",  meta: "AFWB Children's Home", alt: "The Grinch in a Santa suit rides a decorated Harley during a toy run" },
       { src: "santa.jpg",         title: "Front Row with Santa", meta: "AFWB Children's Home", alt: "A girl in reindeer antlers grins beside Santa Claus" },
       { src: "fishing.jpg",       title: "Catch of the Day",     meta: "Documentary",   wide: true, alt: "A grandmother in a sun hat reels in a bluegill from her wheelchair on a dock" },
+      { src: "family-fun.webp",   title: "Family Fun",           meta: "Creative portrait", wide: true, alt: "Three teammates stand beneath string lights as fire, ice, and electricity effects surround them" },
     ],
   },
   {
     label: "Roll 04", title: "Honor",
-    blurb: "A Marine homecoming series. Dress blues, worn boots, and the weight both carry.",
+    blurb: "One continuing portrait series about service, homecoming, memory, and the quiet symbols of duty.",
     photos: [
-      { src: "marine-cover.jpg", title: "Dress Blues at Golden Hour", meta: "Portrait", alt: "A Marine in dress blues adjusts his white cover, sunlight flaring through the trees" },
-      { src: "freedom.jpg",      title: "Freedom",                    meta: "Golden hour", alt: "A hand trails through tall grass, silhouetted against a warm setting sun" },
-      { src: "marine-boots.jpg", title: "Where He's Been",  meta: "Series · 1 of 2", alt: "Worn combat boots with dog tags hanging between the laces" },
-      { src: "marine-dress.jpg", title: "Where He's Going", meta: "Series · 2 of 2", alt: "A white dress cover resting on polished black dress shoes" },
+      { src: "marine-cover.jpg", title: "Dress Blues at Golden Hour", meta: "Honor series · 1 of 6", alt: "A Marine in dress blues adjusts his white cover, sunlight flaring through the trees" },
+      { src: "freedom.jpg",      title: "Freedom",                    meta: "Honor series · 2 of 6", alt: "A hand trails through tall grass, silhouetted against a warm setting sun" },
+      { src: "marine-boots.jpg", title: "Where He's Been",            meta: "Honor series · 3 of 6", alt: "Worn combat boots with dog tags hanging between the laces" },
+      { src: "marine-dress.jpg", title: "Where He's Going",           meta: "Honor series · 4 of 6", alt: "A white dress cover resting on polished black dress shoes" },
+      { src: "always-ready.webp", title: "Always Ready",              meta: "Honor series · 5 of 6", alt: "A Marine stands in dress blues as golden sunlight flares behind him" },
+      { src: "home-honor.webp", title: "Home",                        meta: "Honor series · 6 of 6", wide: true, alt: "A calm lake and autumn shoreline framed by trees and a white fence" },
     ],
   },
   {
