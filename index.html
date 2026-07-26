@@ -150,22 +150,39 @@
   .strip::before{left:0}
   .strip::after{right:0}
 
-  /* The Honor roll sits over a restrained golden-hour backlight.
-     The opaque section surface keeps the glow visible only at its edges. */
+  /* Keep Community quick to scan: one compact, even contact sheet. */
+  .community-roll .roll-head{max-width:780px;padding-top:38px;padding-bottom:16px}
+  .community-roll .roll-grid{
+    max-width:780px;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;
+  }
+  .community-roll .cap{padding-top:7px}
+  .community-roll .cap .meta{margin-top:2px}
+
+  /* A large photographic flare lives behind the Honor roll. Its long mask
+     lets the amber light dissolve gradually toward both ends of the page. */
   .honor-roll{
-    position:relative;isolation:isolate;margin:38px 0;padding:10px 0 22px;
+    position:relative;isolation:isolate;margin:86px 0;padding:34px 0;
   }
   .honor-roll::before{
-    content:"";position:absolute;z-index:-2;pointer-events:none;
-    inset:-34px 4%;
+    content:"";position:absolute;z-index:-1;pointer-events:none;
+    inset:-220px -12%;
     background:
-      radial-gradient(ellipse 68% 92px at 50% 0%,rgba(224,162,73,.48),transparent 72%),
-      radial-gradient(ellipse 68% 92px at 50% 100%,rgba(224,162,73,.42),transparent 72%);
-    filter:blur(22px);opacity:.72;
+      radial-gradient(ellipse 62% 28% at 52% 50%,rgba(255,195,84,.31) 0%,rgba(223,145,45,.16) 34%,transparent 74%),
+      linear-gradient(103deg,transparent 35%,rgba(255,203,104,.06) 43%,rgba(255,242,200,.28) 49.4%,rgba(247,170,62,.13) 52%,transparent 61%);
+    filter:blur(14px);opacity:.95;
+    -webkit-mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.16) 15%,#000 37%,#000 63%,rgba(0,0,0,.16) 85%,transparent 100%);
+    mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.16) 15%,#000 37%,#000 63%,rgba(0,0,0,.16) 85%,transparent 100%);
   }
   .honor-roll::after{
-    content:"";position:absolute;z-index:-1;pointer-events:none;inset:0;
-    background:linear-gradient(180deg,rgba(27,14,9,.98),var(--espresso) 8%,var(--espresso) 92%,rgba(27,14,9,.98));
+    content:"";position:absolute;z-index:-1;pointer-events:none;inset:-120px -4%;
+    background:
+      radial-gradient(circle at 57% 49%,rgba(255,251,228,.72) 0 4px,rgba(255,194,76,.28) 8px,transparent 25px),
+      radial-gradient(circle at 43% 54%,rgba(240,158,50,.16) 0 18px,transparent 42px),
+      radial-gradient(circle at 67% 43%,rgba(255,207,113,.11) 0 30px,transparent 68px),
+      linear-gradient(103deg,transparent 43%,rgba(255,221,148,.12) 49.5%,transparent 56%);
+    filter:blur(3px);opacity:.72;
+    -webkit-mask-image:linear-gradient(to bottom,transparent,#000 28%,#000 72%,transparent);
+    mask-image:linear-gradient(to bottom,transparent,#000 28%,#000 72%,transparent);
   }
   .honor-roll .roll-grid{
     max-width:920px;grid-template-columns:repeat(2,minmax(0,1fr));
@@ -445,8 +462,8 @@ const ROLLS = [
     photos: [
       { src: "grinch-harley.jpg", title: "Grinch on a Harley",  meta: "AFWB Children's Home", alt: "The Grinch in a Santa suit rides a decorated Harley during a toy run" },
       { src: "santa.jpg",         title: "Front Row with Santa", meta: "AFWB Children's Home", alt: "A girl in reindeer antlers grins beside Santa Claus" },
-      { src: "fishing.jpg",       title: "Catch of the Day",     meta: "Documentary",   wide: true, alt: "A grandmother in a sun hat reels in a bluegill from her wheelchair on a dock" },
-      { src: "family-fun.webp",   title: "Family Fun",           meta: "Creative portrait", wide: true, alt: "Three teammates stand beneath string lights as fire, ice, and electricity effects surround them" },
+      { src: "fishing.jpg",       title: "Catch of the Day",     meta: "Documentary", alt: "A grandmother in a sun hat reels in a bluegill from her wheelchair on a dock" },
+      { src: "family-fun.webp",   title: "Family Fun",           meta: "Creative portrait", alt: "Three teammates stand beneath string lights as fire, ice, and electricity effects surround them" },
     ],
   },
   {
@@ -541,7 +558,7 @@ function imgFallback(el){
     </figure>`;
 
   const rollHTML = r => `
-    <section class="${[['Cap & Gown','Community'].includes(r.title) ? 'photo-game' : '', r.title === 'Honor' ? 'honor-roll' : ''].filter(Boolean).join(' ')}" data-album="${esc(r.title)}">
+    <section class="${[['Cap & Gown','Community'].includes(r.title) ? 'photo-game' : '', r.title === 'Community' ? 'community-roll' : '', r.title === 'Honor' ? 'honor-roll' : ''].filter(Boolean).join(' ')}" data-album="${esc(r.title)}">
       <div class="roll-head reveal">
         <div class="label">${esc(r.label)}</div>
         <h2>${esc(r.title)}</h2>
