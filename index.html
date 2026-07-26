@@ -204,9 +204,9 @@
   .photo-game .frame:focus-visible{outline:2px solid var(--caramel);outline-offset:5px}
   .photo-game .frame.game-covered img{transform:scale(1.1);filter:blur(20px) brightness(.16) saturate(.2);opacity:.62}
   .photo-game .frame.game-covered::after{
-    content:"\1F4F7 \A Tap shutter to develop";white-space:pre;
+    content:"\1F4F7 \A Tap to reveal";white-space:pre;
     position:absolute;z-index:4;inset:0 0 42px;display:grid;place-items:center;padding:18px;text-align:center;
-    font-family:var(--mono);font-size:12px;font-weight:700;line-height:2.3;letter-spacing:.14em;text-transform:uppercase;
+    font-family:var(--mono);font-size:clamp(9px,2.5vw,12px);font-weight:700;line-height:2.3;letter-spacing:.08em;text-transform:uppercase;
     color:var(--crema);background:linear-gradient(var(--caramel),var(--caramel)) center/1px 52px no-repeat,
       linear-gradient(90deg,var(--caramel),var(--caramel)) center/52px 1px no-repeat,
       radial-gradient(circle,transparent 0 18%,rgba(31,20,16,.54) 52%,rgba(31,20,16,.92) 100%);
